@@ -3,7 +3,7 @@ var tbl = document.createElement("table");
 var tBody = document.createElement("tbody");
 var controls = document.getElementById('controls')
 var wrapper = document.getElementById('wrapper')
-var rows = 23;
+var rows = 24;
 var cols = 10;
 var startPoint = 34;
 var color;
@@ -13,6 +13,7 @@ var breaker = false;
 var switcher = false;
 var resume = true;
 var pauseMsg = 'GAMEPAUSED';
+var block;
 var bestValue = 0;
 var gear2;
 var gear1;
@@ -41,9 +42,10 @@ tbl.setAttribute("border", "2");
 
 controls.insertBefore(best, bestLoc)
 for (i = 0; i < td.length; i++) {
-    if (i < 30) {
+    if (i < 40) {
         td[i].setAttribute('class', 'hide')
     }
+   // td[i].textContent=(i+1)
 }
 
 function randColor() {

@@ -1,13 +1,14 @@
 function checkLost() {
-    for (i = 20; i < 30; i++) {
+    for (i = 30; i < 40; i++) {
         if (td[i].style.background !== '' &&
             td[i + 10].style.background !== '') {
+            console.log('lost')
             alert('You Lost');
             resume = true;
             clearInterval(gear2);
             clearInterval(gear1);
             clearInterval(go);
-            launch();
+            setTimeout(launch(), 5000);
         }
 
     }
@@ -54,7 +55,7 @@ function engine() {
         var checker = false;
         color = randColor();
         checkLost()
-        period = period - period * 0.05;
+        period = period - period * 0.03;
     } else {
         resume = true;
     }
