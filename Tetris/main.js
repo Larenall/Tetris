@@ -8,7 +8,7 @@ function checkLost() {
             clearInterval(gear2);
             clearInterval(gear1);
             clearInterval(go);
-            setTimeout(launch(), 5000);
+            launch();
         }
 
     }
