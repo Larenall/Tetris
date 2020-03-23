@@ -1,48 +1,3 @@
-document.body.addEventListener('keydown',
-    function(event) {
-        if (event.key === 'a') {
-            goLeft()
-        }
-        if (event.key === 'd') {
-            goRight()
-        }
-        if (event.key === 'ф') {
-            goLeft()
-        }
-        if (event.key === 'в') {
-            goRight()
-        }
-        if (event.key === 's') {
-            fall()
-        }
-        if (event.key === 'ы') {
-            fall()
-        }
-        if (event.key === 'і') {
-            fall()
-        }
-        if (!event.repeat) {
-            if (event.key === 'w') {
-                rotate()
-            }
-            if (event.key === 'q') {
-                pause()
-            }
-            if (event.key === 'й') {
-                pause()
-            }
-            if (event.key === 'r') {
-                launch()
-            }
-            if (event.key === 'ц') {
-                rotate()
-            }
-            if (event.key === 'к') {
-                launch()
-            }
-        }
-    });
-
 function checkLost() {
     for (i = 0; i < 29; i++) {
         if (td[i].style.background !== '' && td[i + 10].style.background !== '') {
@@ -157,3 +112,26 @@ function begin() {
         switcher = true;
     }
 }
+document.body.addEventListener('keydown',
+    function(event) {
+        if (event.code === 'KeyA') {
+            goLeft()
+        }
+        if (event.code === 'KeyD') {
+            goRight()
+        }
+        if (event.code === 'KeyS') {
+            fall()
+        }
+        if (!event.repeat) {
+            if (event.code === 'KeyW') {
+                rotate()
+            }
+            if (event.code === 'KeyQ') {
+                pause()
+            }
+            if (event.code === 'KeyR') {
+                launch()
+            }
+        }
+    });
