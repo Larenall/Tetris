@@ -1,6 +1,7 @@
 function checkLost() {
-    for (i = 0; i < 29; i++) {
-        if (td[i].style.background !== '' && td[i + 10].style.background !== '') {
+    for (i = 20; i < 30; i++) {
+        if (td[i].style.background !== '' &&
+         td[i+10].style.background !== '') {
             alert('You Lost');
             resume = true;
             clearInterval(gear2);
@@ -48,15 +49,13 @@ function launch() {
 }
 
 function engine() {
-    console.log('engine')
-    if (resume) {
-        console.log('resumed')
+    if (resume){
         randBlock()
         var checker = false;
         color = randColor();
+        checkLost()
         period = period - period * 0.05;
     } else {
-        checkLost()
         resume = true;
     }
     go = setInterval(fall, period);
