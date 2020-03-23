@@ -49,7 +49,7 @@ for (i = 0; i < td.length; i++) {
 }
 
 function randColor() {
-    color = 'hsl(' + Math.round(Math.random() * 360) + ',' + Math.round(Math.random() * 20 + 40) + '%, ' + Math.round(Math.random() * 20 + 40) + '%)';
+    color = 'hsl(' + Math.round(Math.random() * 360) + ',' + Math.round(Math.random() * 40 + 40) + '%, ' + Math.round(Math.random() * 20 + 40) + '%)';
     return color;
 }
 
