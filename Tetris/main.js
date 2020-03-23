@@ -2,13 +2,12 @@ function checkLost() {
     for (i = 30; i < 40; i++) {
         if (td[i].style.background !== '' &&
             td[i + 10].style.background !== '') {
-            console.log('lost')
-            alert('You Lost');
+            lost = true;
             resume = true;
             clearInterval(gear2);
             clearInterval(gear1);
             clearInterval(go);
-            launch();
+            alert('You Lost');
         }
 
     }
@@ -32,6 +31,7 @@ function pause() {
 }
 
 function launch() {
+    lost = false
     if (bestValue < Number(pts[0].textContent)) {
         bestValue = Number(pts[0].textContent);
         best.textContent = 'Session record:' + bestValue;
@@ -50,28 +50,30 @@ function launch() {
 }
 
 function engine() {
-    if (resume) {
-        randBlock()
-        var checker = false;
-        color = randColor();
-        checkLost()
-        period = period - period * 0.03;
-    } else {
-        resume = true;
-    }
-    go = setInterval(fall, period);
-    if (switcher) {
-        clearInterval(gear2);
-        gear1 = setInterval(begin, period)
-        switcher = false;
-    } else {
-        clearInterval(gear1);
-        gear2 = setInterval(begin, period)
+    if (!lost) {
+        if (resume) {
+            randBlock()
+            var checker = false;
+            color = randColor();
+            checkLost()
+            period = period - period * 0.03;
+        } else {
+            resume = true;
+        }
+        go = setInterval(fall, period);
+
+        if (switcher) {
+            clearInterval(gear2);
+            gear1 = setInterval(begin, period)
+            switcher = false;
+        } else {
+            clearInterval(gear1);
+            gear2 = setInterval(begin, period)
+        }
     }
 }
 
 function begin() {
-    console.log('begin')
     if (breaker) {
         clearInterval(go);
         breaker = false

@@ -12,6 +12,7 @@ var streak = 0;
 var breaker = false;
 var switcher = false;
 var resume = true;
+var lost = false;
 var pauseMsg = 'GAMEPAUSED';
 var block;
 var bestValue = 0;
