@@ -1,5 +1,4 @@
 function rotate() {
-    console.log(block)
     if (startPoint > 39) {
         switch (block) {
             case 1:
