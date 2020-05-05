@@ -44,7 +44,7 @@ tbl.setAttribute("border", "2");
 controls.insertBefore(best, bestLoc)
 for (i = 0; i < td.length; i++) {
     if (i < 40) {
-        td[i].setAttribute('class', 'hide')
+        td[i].hidden='true'
     }
    // td[i].textContent=(i+1)
 }
