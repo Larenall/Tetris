@@ -150,3 +150,45 @@ function fall() {
             break;
     }
 }
+function previev() {
+    randColor()
+    randBlock()
+    for(var i=0;i<wTd.length;i++){
+        wTd[i].style.background=''
+    }
+    switch (previevBlock) {
+        case 1:
+            previevO();
+            break;
+        case 11:
+        case 12:
+        case 13:
+        case 14:
+            previevJ();
+            break;
+        case 21:
+        case 22:
+        case 23:
+        case 24:
+            previevL();
+            break;
+        case 31:
+        case 32:
+        case 33:
+        case 34:
+            previevT();
+            break;
+        case 41:
+        case 42:
+            previevI();
+            break;
+        case 51:
+        case 52:
+            previevZ();
+            break;
+        case 61:
+        case 62:
+            previevS();
+            break;
+    }
+}

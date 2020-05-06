@@ -7,13 +7,13 @@ function checkLost() {
             clearInterval(gear2);
             clearInterval(gear1);
             clearInterval(go);
-            alert('You Lost');
+            alert('You Lost');  //checks if you`ve lost and stop the game 
         }
 
     }
 }
 
-function pause() {
+function pause() { //pauses and upauses the game and show a msg
     if (resume) {
         clearInterval(gear2);
         clearInterval(gear1);
@@ -30,16 +30,21 @@ function pause() {
     }
 }
 
-function launch() {
+function launch() {  //starts the game
+    for (i = 90; i < 100; i++) {
+            td[i].textContent = ''; //clears pause msg in case game was restarted while paused
+        }
     lost = false
     if (bestValue < Number(pts[0].textContent)) {
         bestValue = Number(pts[0].textContent);
         best.textContent = 'Session record:' + bestValue;
     }
     pts[0].textContent = '0'
-    clearInterval(gear2);
+
+    clearInterval(gear2);  //needed for proper game unpasing and restarting
     clearInterval(gear1);
     clearInterval(go);
+
     period = prompt('Швидкість руху блоків в мс - default = 500');
     if (period === '' || isNaN(Number(period))) { period = 500; }
     startPoint = 34;
@@ -50,21 +55,22 @@ function launch() {
 }
 
 function engine() {
-    if (!lost) {
-        if (resume) {
-            randBlock()
+    if (!lost) { //checks if u ahvent lost
+        if (resume) { // checks
+            block = previevBlock;
+            color = previevColor  //get block № and its color from previev window
+            previev()
             var checker = false;
-            color = randColor();
             checkLost()
-            period = period - period * 0.03;
+            period = period - period * 0.02;
         } else {
             resume = true;
         }
-        go = setInterval(fall, period);
+        go = setInterval(fall, period); //"go" make blocks fall
 
         if (switcher) {
             clearInterval(gear2);
-            gear1 = setInterval(begin, period)
+            gear1 = setInterval(begin, period) //if block can fall anymore gears calculate and prepare everything for next block, check happens after each fall iteration
             switcher = false;
         } else {
             clearInterval(gear1);
@@ -80,21 +86,21 @@ function begin() {
         startPoint = 34;
         for (j = 0; j < rows; j++) {
             for (i = 0; i < cols; i++) {
-                if (td[(j * 10) + i].style.background === "") {
-                    checker = true;
+                if (td[(j * 10) + i].style.background === "") {  //checks the row if its not filled
+                    checker = true; //true = not filled
                 }
             }
-            if (!checker) {
+            if (!checker) { //checker = false - row is filled and its drops all blocks above that row
                 for (k = j; k > 0; k--) {
                     for (i = 0; i < cols; i++) {
                         td[(k * 10) + i].style.background = td[((k - 1) * 10) + i].style.background;
                     }
                 }
-                streak++;
+                streak++; //counts how many row were filled after the fall of last block
             }
-            checker = false;
+            checker = false; //resets checker for further checks
         }
-        switch (streak) {
+        switch (streak) { //counts and give points
             case 1:
                 pts[0].textContent = Number(pts[0].textContent) + 100 + '';
                 break;
@@ -114,7 +120,7 @@ function begin() {
         switcher = true;
     }
 }
-document.body.addEventListener('keydown',
+document.body.addEventListener('keydown',  //keybinds
     function(event) {
         if (event.code === 'KeyA') {
             goLeft()

@@ -131,3 +131,14 @@ function fallS() {
             break;
     }
 }
+
+function previevS() {
+    switch (previevBlock) {
+        case 61:
+            wTd[previevPoint].style.background = previevColor;
+            wTd[previevPoint - 1].style.background = previevColor;
+            wTd[previevPoint - 6].style.background = previevColor;
+            wTd[previevPoint - 5].style.background = previevColor
+            break;
+    }
+}

@@ -3,10 +3,9 @@
 }
 
 table {
-    margin-left: 278px;
+    float:right;
     background: grey;
     border: 1px white solid;
-    float: left;
 }
 
 td {
@@ -26,7 +25,7 @@ button {
 #controls {
     width: 278px;
     margin-top: 50px;
-    float: right;
+    position:absolute;
     text-align: center;
     font-weight: bold;
     font-size: 40px;
@@ -44,13 +43,11 @@ body {
 }
 
 #wrapper {
+    height: 1000px;
     padding-top: 100px;
-    display: flex;
-    flex: 1;
-    float: right;
+    margin:0 auto;
     background: #2B488C;
-    width: 1000px;
-    padding:;
+    width: 1500px;
 }
 
 h1 {
@@ -58,3 +55,5 @@ h1 {
     color: red;
     text-align: center;
 }
+
+
