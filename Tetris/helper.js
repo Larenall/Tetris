@@ -1,3 +1,6 @@
+if (screen && screen.width > 480) {
+  document.write('<script type="text/javascript" src="foo.js"><\/script>');
+}
 //tables sizes
 var rows = 24;
 var cols = 10;
