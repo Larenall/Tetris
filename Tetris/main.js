@@ -7,7 +7,7 @@ function checkLost() {
             clearInterval(gear2);
             clearInterval(gear1);
             clearInterval(go);
-            alert('You Lost');  //checks if you`ve lost and stop the game 
+            alert('You Lost'); //checks if you`ve lost and stop the game 
         }
 
     }
@@ -30,35 +30,39 @@ function pause() { //pauses and upauses the game and show a msg
     }
 }
 
-function launch() {  //starts the game
-    for (i = 90; i < 100; i++) {
+function launch() { //starts the game
+    var getPeriod = prompt('Швидкість руху блоків в мс - default = 500');
+    if (getPeriod !== null) {
+        period = getPeriod
+        if (period === '' || isNaN(Number(period))) { period = 500; }
+        for (i = 90; i < 100; i++) {
             td[i].textContent = ''; //clears pause msg in case game was restarted while paused
         }
-    lost = false
-    if (bestValue < Number(pts[0].textContent)) {
-        bestValue = Number(pts[0].textContent);
-        best.textContent = 'Session record:' + bestValue;
-    }
-    pts[0].textContent = '0'
+        lost = false
+        if (bestValue < Number(pts[0].textContent)) {
+            bestValue = Number(pts[0].textContent);
+            best.textContent = 'Session record:' + bestValue;
+        }
+        pts[0].textContent = '0'
 
-    clearInterval(gear2);  //needed for proper game unpasing and restarting
-    clearInterval(gear1);
-    clearInterval(go);
+        clearInterval(gear2); //needed for proper game unpasing and restarting
+        clearInterval(gear1);
+        clearInterval(go);
 
-    period = prompt('Швидкість руху блоків в мс - default = 500');
-    if (period === '' || isNaN(Number(period))) { period = 500; }
-    startPoint = 34;
-    for (i = 0; i < td.length; i++) {
-        td[i].style.background = '';
+
+        startPoint = 34;
+        for (i = 0; i < td.length; i++) {
+            td[i].style.background = '';
+        }
+        engine();
     }
-    engine();
 }
 
 function engine() {
     if (!lost) { //checks if u ahvent lost
         if (resume) { // checks
             block = previevBlock;
-            color = previevColor  //get block № and its color from previev window
+            color = previevColor //get block № and its color from previev window
             previev()
             var checker = false;
             checkLost()
@@ -86,7 +90,7 @@ function begin() {
         startPoint = 34;
         for (j = 0; j < rows; j++) {
             for (i = 0; i < cols; i++) {
-                if (td[(j * 10) + i].style.background === "") {  //checks the row if its not filled
+                if (td[(j * 10) + i].style.background === "") { //checks the row if its not filled
                     checker = true; //true = not filled
                 }
             }
@@ -120,7 +124,7 @@ function begin() {
         switcher = true;
     }
 }
-document.body.addEventListener('keydown',  //keybinds
+document.body.addEventListener('keydown', //keybinds
     function(event) {
         if (event.code === 'KeyA') {
             goLeft()
