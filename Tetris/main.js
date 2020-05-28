@@ -126,24 +126,26 @@ function begin() {
 }
 document.body.addEventListener('keydown', //keybinds
     function(event) {
-        if (event.code === 'KeyA') {
-            goLeft()
-        }
-        if (event.code === 'KeyD') {
-            goRight()
-        }
-        if (event.code === 'KeyS') {
-            fall()
-        }
-        if (!event.repeat) {
-            if (event.code === 'KeyW') {
-                rotate()
+        if (resume) {
+            if (event.code === 'KeyA') {
+                goLeft()
             }
-            if (event.code === 'KeyQ') {
-                pause()
+            if (event.code === 'KeyD') {
+                goRight()
             }
-            if (event.code === 'KeyR') {
-                launch()
+            if (event.code === 'KeyS') {
+                fall()
             }
+            if (!event.repeat) {
+                if (event.code === 'KeyW') {
+                    rotate()
+                }
+                if (event.code === 'KeyR') {
+                    launch()
+                }
+            }
+        }
+        if (event.code === 'KeyQ') {
+            pause()
         }
     });
